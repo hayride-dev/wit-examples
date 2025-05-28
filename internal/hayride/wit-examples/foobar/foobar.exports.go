@@ -2,8 +2,30 @@
 
 package foobar
 
+import (
+	"go.bytecodealliance.org/cm"
+)
+
 // Exports represents the caller-defined exports from "hayride:wit-examples/foobar@0.0.1".
 var Exports struct {
+	// Foo represents the caller-defined exports for resource "hayride:wit-examples/foobar@0.0.1#foo".
+	Foo struct {
+		// Destructor represents the caller-defined, exported destructor for resource "foo".
+		//
+		// Resource destructor.
+		Destructor func(self cm.Rep)
+
+		// Constructor represents the caller-defined, exported constructor for resource "foo".
+		//
+		//	constructor()
+		Constructor func() (result Foo)
+
+		// Fun represents the caller-defined, exported method "fun".
+		//
+		//	fun: func() -> string
+		Fun func(self cm.Rep) (result string)
+	}
+
 	// Foobar represents the caller-defined, exported function "foobar".
 	//
 	//	foobar: func(b: bar, f: foo) -> string

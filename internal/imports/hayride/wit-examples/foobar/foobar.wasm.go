@@ -4,6 +4,18 @@ package foobar
 
 // This file contains wasmimport and wasmexport declarations for "hayride:wit-examples@0.0.1".
 
+//go:wasmimport hayride:wit-examples/foobar@0.0.1 [resource-drop]foo
+//go:noescape
+func wasmimport_FooResourceDrop(self0 uint32)
+
+//go:wasmimport hayride:wit-examples/foobar@0.0.1 [constructor]foo
+//go:noescape
+func wasmimport_NewFoo() (result0 uint32)
+
+//go:wasmimport hayride:wit-examples/foobar@0.0.1 [method]foo.fun
+//go:noescape
+func wasmimport_FooFun(self0 uint32, result *string)
+
 //go:wasmimport hayride:wit-examples/foobar@0.0.1 foobar
 //go:noescape
 func wasmimport_Foobar(b0 uint32, f0 uint32, result *string)

@@ -5,15 +5,54 @@ package foobar
 
 import (
 	"github.com/hayride-dev/wit-examples/internal/hayride/wit-examples/bar"
-	"github.com/hayride-dev/wit-examples/internal/hayride/wit-examples/foo"
+	"go.bytecodealliance.org/cm"
 )
-
-// Foo represents the exported type alias "hayride:wit-examples/foobar@0.0.1#foo".
-//
-// See [foo.Foo] for more information.
-type Foo = foo.Foo
 
 // Bar represents the exported type alias "hayride:wit-examples/foobar@0.0.1#bar".
 //
 // See [bar.Bar] for more information.
 type Bar = bar.Bar
+
+// Foo represents the exported resource "hayride:wit-examples/foobar@0.0.1#foo".
+//
+//	resource foo
+type Foo cm.Resource
+
+// FooResourceNew represents the imported resource-new for resource "foo".
+//
+// Creates a new resource handle.
+//
+//go:nosplit
+func FooResourceNew(rep cm.Rep) (result Foo) {
+	rep0 := cm.Reinterpret[uint32](rep)
+	result0 := wasmimport_FooResourceNew((uint32)(rep0))
+	result = cm.Reinterpret[Foo]((uint32)(result0))
+	return
+}
+
+// ResourceRep represents the imported resource-rep for resource "foo".
+//
+// Returns the underlying resource representation.
+//
+//go:nosplit
+func (self Foo) ResourceRep() (result cm.Rep) {
+	self0 := cm.Reinterpret[uint32](self)
+	result0 := wasmimport_FooResourceRep((uint32)(self0))
+	result = cm.Reinterpret[cm.Rep]((uint32)(result0))
+	return
+}
+
+// ResourceDrop represents the imported resource-drop for resource "foo".
+//
+// Drops a resource handle.
+//
+//go:nosplit
+func (self Foo) ResourceDrop() {
+	self0 := cm.Reinterpret[uint32](self)
+	wasmimport_FooResourceDrop((uint32)(self0))
+	return
+}
+
+func init() {
+	Exports.Foo.Destructor = func(self cm.Rep) {}
+}

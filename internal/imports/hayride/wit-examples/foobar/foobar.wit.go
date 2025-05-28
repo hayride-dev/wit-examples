@@ -5,19 +5,51 @@ package foobar
 
 import (
 	"github.com/hayride-dev/wit-examples/internal/imports/hayride/wit-examples/bar"
-	"github.com/hayride-dev/wit-examples/internal/imports/hayride/wit-examples/foo"
 	"go.bytecodealliance.org/cm"
 )
-
-// Foo represents the imported type alias "hayride:wit-examples/foobar@0.0.1#foo".
-//
-// See [foo.Foo] for more information.
-type Foo = foo.Foo
 
 // Bar represents the imported type alias "hayride:wit-examples/foobar@0.0.1#bar".
 //
 // See [bar.Bar] for more information.
 type Bar = bar.Bar
+
+// Foo represents the imported resource "hayride:wit-examples/foobar@0.0.1#foo".
+//
+//	resource foo
+type Foo cm.Resource
+
+// ResourceDrop represents the imported resource-drop for resource "foo".
+//
+// Drops a resource handle.
+//
+//go:nosplit
+func (self Foo) ResourceDrop() {
+	self0 := cm.Reinterpret[uint32](self)
+	wasmimport_FooResourceDrop((uint32)(self0))
+	return
+}
+
+// NewFoo represents the imported constructor for resource "foo".
+//
+//	constructor()
+//
+//go:nosplit
+func NewFoo() (result Foo) {
+	result0 := wasmimport_NewFoo()
+	result = cm.Reinterpret[Foo]((uint32)(result0))
+	return
+}
+
+// Fun represents the imported method "fun".
+//
+//	fun: func() -> string
+//
+//go:nosplit
+func (self Foo) Fun() (result string) {
+	self0 := cm.Reinterpret[uint32](self)
+	wasmimport_FooFun((uint32)(self0), &result)
+	return
+}
 
 // Foobar represents the imported function "foobar".
 //

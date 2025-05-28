@@ -1,13 +1,6 @@
 package hayride:wit-examples@0.0.1;
 
 
-interface foo {
-    resource foo {
-        constructor();
-        fun: func() -> string;
-    }
-}
-
 interface bar {
     resource bar {
         constructor();
@@ -16,8 +9,12 @@ interface bar {
 }
 
 interface foobar {
-    use foo.{foo};
     use bar.{bar};
+
+    resource foo {
+        constructor();
+        fun: func() -> string;
+    }
 
     foobar: func(b: bar, f: foo) -> string;
 }
@@ -28,7 +25,6 @@ interface foobar {
 world exports {
     include hayride:wasip2/imports@0.0.51;
 
-    export foo;
     export bar;
     export foobar;
 }
@@ -36,7 +32,6 @@ world exports {
 world imports {
     include hayride:wasip2/imports@0.0.51;
 
-    import foo;
     import bar;
     import foobar;
 
