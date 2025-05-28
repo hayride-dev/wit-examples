@@ -15,9 +15,14 @@ var Exports struct {
 		// Resource destructor.
 		Destructor func(self cm.Rep)
 
-		// Bar represents the caller-defined, exported method "bar".
+		// Constructor represents the caller-defined, exported constructor for resource "bar".
 		//
-		//	bar: func() -> string
-		Bar func(self cm.Rep) (result string)
+		//	constructor()
+		Constructor func() (result Bar)
+
+		// Bun represents the caller-defined, exported method "bun".
+		//
+		//	bun: func() -> string
+		Bun func(self cm.Rep) (result string)
 	}
 }

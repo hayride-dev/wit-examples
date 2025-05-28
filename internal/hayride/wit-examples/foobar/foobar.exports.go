@@ -6,6 +6,6 @@ package foobar
 var Exports struct {
 	// Foobar represents the caller-defined, exported function "foobar".
 	//
-	//	foobar: func(bar: bar, foo: foo) -> string
-	Foobar func(bar_ Bar, foo_ Foo) (result string)
+	//	foobar: func(b: bar, f: foo) -> string
+	Foobar func(b Bar, f Foo) (result string)
 }

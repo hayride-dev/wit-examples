@@ -28,11 +28,19 @@ func wasmexport_BarDestructor(self0 uint32) {
 	return
 }
 
-//go:wasmexport hayride:wit-examples/bar@0.0.1#[method]bar.bar
-//export hayride:wit-examples/bar@0.0.1#[method]bar.bar
-func wasmexport_BarBar(self0 uint32) (result *string) {
+//go:wasmexport hayride:wit-examples/bar@0.0.1#[constructor]bar
+//export hayride:wit-examples/bar@0.0.1#[constructor]bar
+func wasmexport_Constructor() (result0 uint32) {
+	result := Exports.Bar.Constructor()
+	result0 = cm.Reinterpret[uint32](result)
+	return
+}
+
+//go:wasmexport hayride:wit-examples/bar@0.0.1#[method]bar.bun
+//export hayride:wit-examples/bar@0.0.1#[method]bar.bun
+func wasmexport_BarBun(self0 uint32) (result *string) {
 	self := cm.Reinterpret[cm.Rep]((uint32)(self0))
-	result_ := Exports.Bar.Bar(self)
+	result_ := Exports.Bar.Bun(self)
 	result = &result_
 	return
 }

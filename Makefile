@@ -3,6 +3,9 @@
 default: gen
 
 gen-exports:
-	wit-bindgen-go generate --world hayride:wit-examples/exports --out ./internal ./wit
+	wit-bindgen-go generate -v -vv --world hayride:wit-examples/exports --out ./internal ./wit
 
-gen: gen-exports
+gen-imports:
+	wit-bindgen-go generate -v -vv --world hayride:wit-examples/imports --out ./internal/imports ./wit
+
+gen: gen-exports gen-imports

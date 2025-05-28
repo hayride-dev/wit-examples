@@ -28,11 +28,19 @@ func wasmexport_FooDestructor(self0 uint32) {
 	return
 }
 
-//go:wasmexport hayride:wit-examples/foo@0.0.1#[method]foo.foo
-//export hayride:wit-examples/foo@0.0.1#[method]foo.foo
-func wasmexport_FooFoo(self0 uint32) (result *string) {
+//go:wasmexport hayride:wit-examples/foo@0.0.1#[constructor]foo
+//export hayride:wit-examples/foo@0.0.1#[constructor]foo
+func wasmexport_Constructor() (result0 uint32) {
+	result := Exports.Foo.Constructor()
+	result0 = cm.Reinterpret[uint32](result)
+	return
+}
+
+//go:wasmexport hayride:wit-examples/foo@0.0.1#[method]foo.fun
+//export hayride:wit-examples/foo@0.0.1#[method]foo.fun
+func wasmexport_FooFun(self0 uint32) (result *string) {
 	self := cm.Reinterpret[cm.Rep]((uint32)(self0))
-	result_ := Exports.Foo.Foo(self)
+	result_ := Exports.Foo.Fun(self)
 	result = &result_
 	return
 }

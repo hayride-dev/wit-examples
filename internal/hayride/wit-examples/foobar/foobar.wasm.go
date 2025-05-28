@@ -10,10 +10,10 @@ import (
 
 //go:wasmexport hayride:wit-examples/foobar@0.0.1#foobar
 //export hayride:wit-examples/foobar@0.0.1#foobar
-func wasmexport_Foobar(bar0 uint32, foo0 uint32) (result *string) {
-	bar_ := cm.Reinterpret[Bar]((uint32)(bar0))
-	foo_ := cm.Reinterpret[Foo]((uint32)(foo0))
-	result_ := Exports.Foobar(bar_, foo_)
+func wasmexport_Foobar(b0 uint32, f0 uint32) (result *string) {
+	b := cm.Reinterpret[Bar]((uint32)(b0))
+	f := cm.Reinterpret[Foo]((uint32)(f0))
+	result_ := Exports.Foobar(b, f)
 	result = &result_
 	return
 }
