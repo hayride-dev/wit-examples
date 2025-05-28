@@ -1,2 +1,2 @@
-# go-wit-examples
-Wit-bindgen-go generate bindings using various wit example cases 
+# wit-examples
+generate bindings using various wit example cases 

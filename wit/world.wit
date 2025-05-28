@@ -1,0 +1,28 @@
+package hayride:wit-examples@0.0.1;
+
+
+interface foo {
+    resource foo {
+        foo: func() -> string;
+    }
+}
+
+interface bar {
+    resource bar {
+        bar: func() -> string;
+    }
+}
+
+interface foobar {
+    use foo.{foo};
+    use bar.{bar};
+
+    foobar: func(bar: bar, foo: foo) -> string;
+}
+
+
+world exports {
+    export foo;
+    export bar;
+    export foobar;
+}
